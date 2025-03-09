@@ -6,4 +6,8 @@
 
     <item android:title="Delete DB Data"
         android:id="@+id/deletedata"/>
+
+    <item android:title="Log Reports"
+        android:id="@+id/logreports"/>
+
 </menu>

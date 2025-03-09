@@ -1,7 +1,13 @@
 package com.example.d308vacationmanager.Entities;
 
+import static android.provider.Settings.System.DATE_FORMAT;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 @Entity(tableName = "vacations")
 public class Vacation {
@@ -64,4 +70,38 @@ public class Vacation {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
+
+    public boolean isValid() {
+        return isNotEmpty(vacationTitle) && isNotEmpty(vacationHotel) &&
+                isValidDate(startDate) && isValidDate(endDate) &&
+                isStartDateBeforeEndDate();
+    }
+
+    private boolean isNotEmpty(String str) {
+        return str != null && !str.trim().isEmpty();
+    }
+
+    private boolean isValidDate(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+        sdf.setLenient(false); // Strict date validation
+        try {
+            sdf.parse(date);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
+    private boolean isStartDateBeforeEndDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+        try {
+            if (startDate == null || endDate == null) {
+                return false;
+            }
+            return sdf.parse(startDate).before(sdf.parse(endDate));
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
 }

@@ -27,7 +27,7 @@ public class VacationList extends AppCompatActivity {
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    private final ActivityResultLauncher<Intent> vacationLauncher =
+    public final ActivityResultLauncher<Intent> vacationLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                     result -> {
                         if (result.getResultCode() == Activity.RESULT_OK) {
@@ -66,7 +66,7 @@ public class VacationList extends AppCompatActivity {
         refreshVacationList();
     }
 
-    private void refreshVacationList() {
+    public void refreshVacationList() {
         List<Vacation> allVacations = repository.getVacations();
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         VacationAdapter vacationAdapter = (VacationAdapter) recyclerView.getAdapter();
@@ -130,6 +130,9 @@ public class VacationList extends AppCompatActivity {
             refreshVacationList();
 
             return true;
+        } else if (item.getItemId() == R.id.logreports){
+            Intent intent = new Intent(this, LogActivity.class);
+            startActivity(intent);
         }
         return true;
     }

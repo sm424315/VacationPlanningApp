@@ -44,6 +44,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+        <activity
+            android:name=".UI.LogActivity"
+            android:exported="false"
+            android:parentActivityName=".UI.VacationList"
+            android:label="Vacation List" />
+        </application>
 
 </manifest>

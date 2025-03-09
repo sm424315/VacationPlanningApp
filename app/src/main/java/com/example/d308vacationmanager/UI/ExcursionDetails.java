@@ -35,7 +35,7 @@ public class ExcursionDetails extends AppCompatActivity {
     int excursionID;
     int vacationID;
     EditText editTitle;
-    Repository repository;
+    public Repository repository;
     Excursion currentExcursion;
     TextView editExcursionDate;
     DatePickerDialog.OnDateSetListener excursionDate;
@@ -64,7 +64,7 @@ public class ExcursionDetails extends AppCompatActivity {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        if (setDate != null) {
+        if (setDate != null) { /// NULL VALIDATION
             try {
                 Date excursionDate = sdf.parse(setDate);
                 myCalendarDate.setTime(excursionDate);
@@ -141,7 +141,7 @@ public class ExcursionDetails extends AppCompatActivity {
                 Date startDate = sdf.parse(vacation.getStartDate());
 
                 if (excursionDate.before(startDate) || excursionDate.after(endDate)) { // makes sure chosen date falls into vacation date range
-                    Toast.makeText(this, "Excursion Date must be within the Vacation's Start and End dates", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Excursion Date must be within the Vacation's Start and End dates", Toast.LENGTH_LONG).show(); /// DATE RANGE VALIDATION
                     return true;
                 } else {
                     Excursion excursion;
@@ -208,4 +208,17 @@ public class ExcursionDetails extends AppCompatActivity {
         updateLabel();
     }
 
+    public boolean isExcursionDateValid(String excursionDateString, Vacation vacation) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy", Locale.US);
+        try {
+            Date excursionDate = sdf.parse(excursionDateString);
+            Date startDate = sdf.parse(vacation.getStartDate());
+            Date endDate = sdf.parse(vacation.getEndDate());
+
+            return !excursionDate.before(startDate) && !excursionDate.after(endDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

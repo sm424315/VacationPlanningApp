@@ -12,7 +12,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,11 +23,14 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.example.d308vacationmanager.Entities.Excursion;
 import com.example.d308vacationmanager.Entities.Vacation;
+import com.example.d308vacationmanager.Entities.Log;
+
 import com.example.d308vacationmanager.R;
 import com.example.d308vacationmanager.Repository.Repository;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -43,20 +45,20 @@ public class VacationDetails extends AppCompatActivity {
     int vacationID;
     String setStartDate;
     String setEndDate;
-    EditText editTitle;
-    EditText editHotel;
-    TextView editStartDate;
-    TextView editEndDate;
+    public EditText editTitle;
+    public EditText editHotel;
+    public TextView editStartDate;
+    public TextView editEndDate;
     Repository repository;
     Vacation currentVacation;
     int numExcursions;
     DatePickerDialog.OnDateSetListener startDate;
     DatePickerDialog.OnDateSetListener endDate;
-    final Calendar myCalendarStart = Calendar.getInstance();
-    final Calendar myCalendarEnd = Calendar.getInstance();
+    public final Calendar myCalendarStart = Calendar.getInstance();
+    public final Calendar myCalendarEnd = Calendar.getInstance();
     List<Excursion> filteredExcursions = new ArrayList<>();
     Random rand = new Random();
-    int numAlert = rand.nextInt(99999);
+    public int numAlert = rand.nextInt(99999);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,13 +172,13 @@ public class VacationDetails extends AppCompatActivity {
         };
     }
 
-    private void updateLabelStart() {
+    public void updateLabelStart() {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         editStartDate.setText(sdf.format(myCalendarStart.getTime()));
     }
 
-    private void updateLabelEnd() {
+    public void updateLabelEnd() {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         editEndDate.setText(sdf.format(myCalendarEnd.getTime()));
@@ -194,31 +196,34 @@ public class VacationDetails extends AppCompatActivity {
         }
 
         if (item.getItemId() == R.id.vacationsave) {
+            Vacation vacation;
+
             String myFormat = "MM/dd/yy";
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
             String startDateString = sdf.format(myCalendarStart.getTime());
             String endDateString = sdf.format(myCalendarEnd.getTime());
 
+
             try {
                 Date startDate = sdf.parse(startDateString);
                 Date endDate = sdf.parse(endDateString);
-                if (endDate.before(startDate)) {
-                    Toast.makeText(this, "End date must be AFTER start date", Toast.LENGTH_LONG).show();
-                } else {
-                    Vacation vacation;
 
-                    if (vacationID == -1) {
-                        vacation = new Vacation(0, editTitle.getText().toString(), editHotel.getText().toString(), startDateString, endDateString);
+                if (vacationID == -1) {
+                    vacation = new Vacation(0, editTitle.getText().toString(), editHotel.getText().toString(), startDateString, endDateString);
+                    if (vacation.isValid()){
                         repository.insert(vacation);
-
-                        finish();
-
-                    } else {
-                        vacation = new Vacation(vacationID, editTitle.getText().toString(), editHotel.getText().toString(), startDateString, endDateString);
-                        repository.update(vacation);
-
-                        finish();
+                        repository.insert(new Log("Created", vacation.getVacationTitle(), LocalDateTime.now().toString()));
                     }
+
+                    finish();
+
+                } else {
+                    vacation = new Vacation(vacationID, editTitle.getText().toString(), editHotel.getText().toString(), startDateString, endDateString);
+                    if (vacation.isValid()) {
+                        repository.update(vacation);
+                        repository.insert(new Log("Updated", vacation.getVacationTitle(), LocalDateTime.now().toString()));
+                    }
+                    finish();
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -236,9 +241,10 @@ public class VacationDetails extends AppCompatActivity {
             if (numExcursions == 0) {
                 repository.delete(currentVacation);
                 Toast.makeText(VacationDetails.this, currentVacation.getVacationTitle() + " deleted", Toast.LENGTH_LONG).show();
+                repository.insert(new Log("Deleted", currentVacation.getVacationTitle(), LocalDateTime.now().toString()));
                 VacationDetails.this.finish();
             } else {
-                Toast.makeText(VacationDetails.this, "Can't delete a vacation with excursions", Toast.LENGTH_LONG).show();
+                Toast.makeText(VacationDetails.this, "Can't delete a vacation with excursions", Toast.LENGTH_LONG).show(); /// DELETION VALIDATION
             }
         }
 
