@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "323266489085",
+    "project_id": "vacation-planning-app-ff3a5",
+    "storage_bucket": "vacation-planning-app-ff3a5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323266489085:android:bd602454b3f7f08e93ec94",
+        "android_client_info": {
+          "package_name": "com.smcferro.vacationplanningapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY8xXij-Q6TQafLMBNLx4iAwHr6cL5i-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

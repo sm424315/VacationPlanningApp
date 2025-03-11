@@ -4,6 +4,8 @@ buildscript {
 
 plugins {
     alias(libs.plugins.android.application)
+    id("com.android.application")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -57,4 +59,7 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:4.6.1'
     testImplementation "androidx.arch.core:core-testing:2.1.0"
     testImplementation 'org.robolectric:robolectric:4.9'
+
+    implementation(platform("com.google.firebase:firebase-bom:33.10.0"))
+    implementation("com.google.firebase:firebase-analytics")
 }
