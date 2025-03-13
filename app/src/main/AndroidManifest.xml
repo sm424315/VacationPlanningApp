@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.smcferro.d308vacationmanager">
+    xmlns:tools="http://schemas.android.com/tools">
 
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
@@ -37,8 +36,7 @@
         <activity
             android:name="com.smcferro.d308vacationmanager.UI.MainActivity"
             android:exported="true"
-            android:label="Vacation Planning App"
-            android:theme="@style/Theme.D308VacationManager">
+            android:label="Main Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
