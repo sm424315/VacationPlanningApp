@@ -4,7 +4,11 @@
     "type": "APK",
     "kind": "Directory"
   },
+<<<<<<< HEAD
   "applicationId": "com.smcferro.d308vacationmanager",
+=======
+  "applicationId": "com.example.d308vacationmanager",
+>>>>>>> ef1d4f62af1c5499b9e63bb4a7aa669b46abbdb2
   "variantName": "debug",
   "elements": [
     {
