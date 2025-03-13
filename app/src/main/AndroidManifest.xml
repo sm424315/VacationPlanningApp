@@ -36,7 +36,7 @@
         <activity
             android:name="com.smcferro.d308vacationmanager.UI.MainActivity"
             android:exported="true"
-            android:label="Main Activity">
+            android:label="Vacation Planning App">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,7 +47,7 @@
             android:name="com.smcferro.d308vacationmanager.UI.LogActivity"
             android:exported="false"
             android:parentActivityName="com.smcferro.d308vacationmanager.UI.VacationList"
-            android:label="Vacation List" />
+            android:label="Log Reports" />
         </application>
 
 </manifest>
