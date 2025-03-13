@@ -1,0 +1,10 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Define the background shape -->
+    <solid android:color="@color/colorPrimary"/> <!-- Set the background color -->
+
+    <!-- Define the corner radius for a semi-square shape -->
+    <corners android:radius="16dp"/> <!-- Adjust the radius for semi-squared corners -->
+
+    <!-- Optionally, you can add a border -->
+    <!-- <stroke android:color="@color/borderColor" android:width="2dp" /> -->
+</shape>

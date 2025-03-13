@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomFABStyle">
+        <item name="backgroundTint">@color/colorSecondary</item> <!-- Set background color for FAB -->
+        <item name="srcCompat">@drawable/fab_semi_square</item> <!-- Set icon if desired -->
+        <item name="rippleColor">@color/colorSecondary</item> <!-- Set ripple color when clicked -->
+    </style></resources>
