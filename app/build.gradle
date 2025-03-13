@@ -4,16 +4,15 @@ buildscript {
 
 plugins {
     alias(libs.plugins.android.application)
-    id("com.android.application")
     id("com.google.gms.google-services")
 }
 
 android {
-    namespace 'com.example.d308vacationmanager'
+    namespace 'com.smcferro.d308vacationmanager'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.example.d308vacationmanager"
+        applicationId "com.smcferro.d308vacationmanager"
         minSdk 26
         targetSdk 35
         versionCode 1

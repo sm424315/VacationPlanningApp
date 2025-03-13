@@ -3,7 +3,7 @@ package com.example.d308vacationmanager;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.example.d308vacationmanager.Entities.Vacation;
+import com.smcferro.d308vacationmanager.Entities.Vacation;
 
 public class VacationDetailsTest {
     @Test

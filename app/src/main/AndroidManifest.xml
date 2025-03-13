@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.smcferro.d308vacationmanager">
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,29 +15,29 @@
         android:theme="@style/Theme.D308VacationManager"
         tools:targetApi="31">
         <activity
-            android:name=".UI.ExcursionDetails"
-            android:parentActivityName=".UI.VacationDetails"
+            android:name="com.smcferro.d308vacationmanager.UI.ExcursionDetails"
+            android:parentActivityName="com.smcferro.d308vacationmanager.UI.VacationDetails"
             android:exported="false"
             android:label="Excursion Details"
             />
         <activity
-            android:name=".UI.VacationDetails"
-            android:parentActivityName=".UI.VacationList"
+            android:name="com.smcferro.d308vacationmanager.UI.VacationDetails"
+            android:parentActivityName="com.smcferro.d308vacationmanager.UI.VacationList"
             android:exported="false"
             android:label="Vacation Details"
             />
-        <receiver android:name=".UI.MyReceiver"
+        <receiver android:name="com.smcferro.d308vacationmanager.UI.MyReceiver"
             android:exported="false">
         </receiver>
         <activity
-            android:name=".UI.VacationList"
+            android:name="com.smcferro.d308vacationmanager.UI.VacationList"
             android:exported="false"
-            android:parentActivityName=".UI.MainActivity"
+            android:parentActivityName="com.smcferro.d308vacationmanager.UI.MainActivity"
             android:label="Vacation List" />
         <activity
-            android:name=".UI.MainActivity"
+            android:name="com.smcferro.d308vacationmanager.UI.MainActivity"
             android:exported="true"
-            android:label="Main Activity"
+            android:label="Vacation Planning App"
             android:theme="@style/Theme.D308VacationManager">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,9 +46,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UI.LogActivity"
+            android:name="com.smcferro.d308vacationmanager.UI.LogActivity"
             android:exported="false"
-            android:parentActivityName=".UI.VacationList"
+            android:parentActivityName="com.smcferro.d308vacationmanager.UI.VacationList"
             android:label="Vacation List" />
         </application>
 

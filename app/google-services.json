@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:323266489085:android:bd602454b3f7f08e93ec94",
+        "mobilesdk_app_id": "1:323266489085:android:41ba37efc4d7823e93ec94",
         "android_client_info": {
-          "package_name": "com.smcferro.vacationplanningapp"
+          "package_name": "com.smcferro.d308vacationmanager"
         }
       },
       "oauth_client": [],
