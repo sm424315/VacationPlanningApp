@@ -1,27 +1,66 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>My GitHub Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
 
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: #fff;
+            text-decoration: none;
+            background: #ff7f50;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #ff6347;
+        }
+    </style>
 </head>
 
 <body>
-
-    <h1>D424 Software Engineering Capstone</h1>
-
-    <p>TEST</p>
-
-    <a href="https://raw.githubusercontent.com/sm424315/VacationPlanningApp/main/app/debug/app-debug.apk" download="app-debug.apk">Download APK</a>
-
-   <p>Add more content or delete code as desired.</p>
-
+    <div class="container">
+        <h1>D424 Software Engineering Capstone</h1>
+        <p>This is the Vacation Planning Mobile Application that was created as my D424 Capstone Project for Western Governor's University.</p>
+        <a href="https://raw.githubusercontent.com/sm424315/VacationPlanningApp/main/app/debug/app-debug.apk" download="app-debug.apk" class="download-btn">Download APK</a>
+    </div>
 </body>
 
 </html>
